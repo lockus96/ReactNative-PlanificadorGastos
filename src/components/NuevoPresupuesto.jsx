@@ -1,7 +1,11 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Text, View, TextInput, Pressable, StyleSheet } from 'react-native'
+import globalStyles from './styles'
 
-export default function NuevoPresupuesto() {
+export default function NuevoPresupuesto({handeNuevoPresupuesto}) {
+
+     const [ presupuesto, setPresupuesto ] = useState(0)
+
   return (
      <View style={styles.contenedor}>
           <Text style={styles.label}>
@@ -10,9 +14,15 @@ export default function NuevoPresupuesto() {
           <TextInput 
                keyboardType='numeric'
                placeholder='Agrega tu presupuesto'
+               placeholderTextColor={'black'}
                style={styles.input}
+               value={presupuesto.toString()}
+               onChangeText={setPresupuesto}
           />
-          <Pressable style={styles.boton}>
+          <Pressable 
+               style={styles.boton}
+               onPress={()=> handeNuevoPresupuesto(presupuesto)}
+          >
                <Text style={styles.botonTexto}>
                     Agregar Presupuesto
                </Text>
@@ -23,21 +33,7 @@ export default function NuevoPresupuesto() {
 
 const styles = StyleSheet.create({
      contenedor: {
-          backgroundColor: '#fff',
-          marginHorizontal: 10,
-          borderRadius: 10,
-          paddingVertical: 40, 
-          paddingHorizontal: 20,
-          transform: [{ translateY: 50 }],
-          shadowColor: "#000",
-          shadowOffset: {
-               width: 0,
-               height: 5,
-          },
-          shadowOpacity: 0.34,
-          shadowRadius: 6.27,
-
-          elevation: 10,
+          ...globalStyles.contenedor
      },
      label: {
           textAlign: 'center',
@@ -50,6 +46,7 @@ const styles = StyleSheet.create({
           borderRadius: 15,
           textAlign: 'center',
           marginTop: 30,
+          color: 'black'
      },
      boton: {
           marginTop: 30,

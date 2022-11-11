@@ -1,23 +1,42 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   ScrollView,
   StyleSheet,
   Text,
   View,
+  Alert
 } from 'react-native';
+import ControlPresupuesto from './src/components/ControlPresupuesto';
 import Header from './src/components/Header';
 import NuevoPresupuesto from './src/components/NuevoPresupuesto';
 
 const App = () => {
  
+  const [ isValidPresupuesto, setIsValidPresupuesto ] = useState(false) 
+
+  const handeNuevoPresupuesto = (presupuesto) =>{
+    if(Number(presupuesto) > 0){
+      setIsValidPresupuesto(true)
+    } else {
+      Alert.alert('Error', 'Presupuesto no válido', [{text: 'OK'}])
+    }
+  }
 
   return (
+
       <View style={styles.contenedor}>
         <View style={styles.header}>
           <Header />
-          <NuevoPresupuesto />
+
+          {isValidPresupuesto ? (
+            <ControlPresupuesto /> 
+          ) : (
+            <NuevoPresupuesto 
+                handeNuevoPresupuesto={handeNuevoPresupuesto}
+            />
+          )}
+          
         </View>
-        
       </View>
   );
 };

@@ -1,10 +1,13 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { Text, View, TextInput, Pressable, StyleSheet } from 'react-native'
 import globalStyles from './styles'
 
-export default function NuevoPresupuesto({handeNuevoPresupuesto}) {
+export default function NuevoPresupuesto({
+     handeNuevoPresupuesto, 
+     presupuesto, 
+     setPresupuesto
+}) {
 
-     const [ presupuesto, setPresupuesto ] = useState(0)
 
   return (
      <View style={styles.contenedor}>
@@ -14,7 +17,7 @@ export default function NuevoPresupuesto({handeNuevoPresupuesto}) {
           <TextInput 
                keyboardType='numeric'
                placeholder='Agrega tu presupuesto'
-               placeholderTextColor={'black'}
+               placeholderTextColor={'#808080'}
                style={styles.input}
                value={presupuesto.toString()}
                onChangeText={setPresupuesto}

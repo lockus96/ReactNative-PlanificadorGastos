@@ -16,6 +16,7 @@ const App = () => {
  
   const [ isValidPresupuesto, setIsValidPresupuesto ] = useState(false) 
   const [ presupuesto, setPresupuesto ] = useState(0)
+  const [ gastos, setGastos ] = useState([])
 
 
   const handeNuevoPresupuesto = (presupuesto) =>{
@@ -35,6 +36,7 @@ const App = () => {
           {isValidPresupuesto ? (
             <ControlPresupuesto 
                 presupuesto={presupuesto}
+                gastos={gastos}
             /> 
           ) : (
             <NuevoPresupuesto 

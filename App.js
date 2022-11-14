@@ -58,9 +58,12 @@ const App = () => {
               <Modal 
                 animationType='fade'
                 visible={modal}
+                onRequestClose={()=>{
+                  setModal(!modal)
+                }}
               >
                   <FormularioGasto 
-                  
+                    setModal={setModal}
                   />
               </Modal>
             )}

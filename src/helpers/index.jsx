@@ -1,10 +1,23 @@
-export const formatearCantidad = cantidad =>{
+export const formatearCantidad = cantidad => {
 
-     return Number(cantidad).toLocaleString('es-AR', 
-     {
-         style: 'currency',
-         currency: 'ARS' 
-     })
+    return Number(cantidad).toLocaleString('es-AR',
+        {
+            style: 'currency',
+            currency: 'ARS',
+            maximumFractionDigits: 0,
+            minimumFractionDigits: 0,
+        })
+}
+
+export const formatearFecha = (fecha) => {
+    const fechaNueva = new Date(fecha)
+    const opciones = {
+        year: '2-digit',
+        month: '2-digit',
+        day: '2-digit'
+    }
+
+    return fechaNueva.toLocaleDateString('es-ES', opciones)
 }
 
 export const generarId = () => {

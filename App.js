@@ -12,8 +12,9 @@ import {
 import ControlPresupuesto from './src/components/ControlPresupuesto';
 import FormularioGasto from './src/components/FormularioGasto';
 import Header from './src/components/Header';
+import ListadoGastos from './src/components/ListadoGastos';
 import NuevoPresupuesto from './src/components/NuevoPresupuesto';
-
+import { generarId } from './src/helpers';
 
 
 const App = () => {
@@ -30,6 +31,26 @@ const App = () => {
     } else {
       Alert.alert('Error', 'Presupuesto no válido', [{text: 'OK'}])
     }
+  }
+
+  const handleGasto = gasto => {
+
+    if(Object.values(gasto).includes('')){
+      Alert.alert(
+        'Error',
+        'Todos los campos son obligatorios'
+      )
+
+      return
+    } 
+
+    // Añadir el gasto al State
+
+    gasto.id = generarId()
+
+    setGastos([...gastos, gasto])
+    
+    setModal(!modal)
   }
 
   return (
@@ -54,6 +75,10 @@ const App = () => {
 
         </View>
 
+        {isValidPresupuesto && (
+          <ListadoGastos />
+        )}
+
             {modal && (
               <Modal 
                 animationType='fade'
@@ -64,6 +89,7 @@ const App = () => {
               >
                   <FormularioGasto 
                     setModal={setModal}
+                    handleGasto={handleGasto}
                   />
               </Modal>
             )}

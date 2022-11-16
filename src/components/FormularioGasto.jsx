@@ -9,7 +9,7 @@ import {
 import { Picker } from '@react-native-picker/picker'
 import globalStyles from './styles'
 
-export default function FormularioGasto({ setModal }) {
+export default function FormularioGasto({ setModal, handleGasto }) {
 
      const [nombre, setNombre] = useState('')
      const [cantidad, setCantidad] = useState('')
@@ -123,6 +123,7 @@ export default function FormularioGasto({ setModal }) {
 
                     <Pressable
                          style={styles.submitBtn}
+                         onPress={()=>handleGasto({ nombre, cantidad, categoria })}
                     >
                          <Text
                               style={styles.submitBtnTexto}

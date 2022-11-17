@@ -4,8 +4,6 @@ import Gasto from './Gasto'
 
 const ListadoGastos = ({ gastos, setModal, setGasto }) => {
 
-     console.log(gastos)
-
      return (
           <View style={styles.contenedor}>
                <Text

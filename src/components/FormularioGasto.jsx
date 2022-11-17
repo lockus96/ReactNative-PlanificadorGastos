@@ -20,6 +20,7 @@ export default function FormularioGasto({
      const [cantidad, setCantidad] = useState('')
      const [categoria, setCategoria] = useState('')
      const [id, setId] = useState('')
+     const [fecha, setFecha] = useState('')   
 
      useEffect(()=>{
           if(gasto?.nombre){
@@ -27,25 +28,41 @@ export default function FormularioGasto({
                setCantidad(gasto.cantidad)
                setCategoria(gasto.categoria)
                setId(gasto.id)
+               setFecha(gasto.fecha)
           }
      }, [gasto])
 
      return (
           <View style={styles.contenedor}>
-               <View>
+               <View style={styles.contenedorBtn}>
                     <Pressable
-                         style={styles.btnCancelar}
+                         style={[styles.btn, styles.btnCancelar]}
                          onPress={() => {
                               setModal(false)
                               setGasto({})
                          }}
                     >
                          <Text
-                              style={styles.btnCancelarTexto}
+                              style={styles.btnTexto}
                          >
                               Cancelar
                          </Text>
                     </Pressable>
+
+                    <Pressable
+                         style={[styles.btn, styles.btnEliminar]}
+                         onPress={() => {
+                              setModal(false)
+                              setGasto({})
+                         }}
+                    >
+                         <Text
+                              style={styles.btnTexto}
+                         >
+                              Eliminar
+                         </Text>
+                    </Pressable>
+
                </View>
 
                <View
@@ -141,7 +158,7 @@ export default function FormularioGasto({
 
                     <Pressable
                          style={styles.submitBtn}
-                         onPress={()=>handleGasto({ nombre, cantidad, categoria })}
+                         onPress={()=>handleGasto({ nombre, cantidad, categoria, id, fecha })}
                     >
                          <Text
                               style={styles.submitBtnTexto}
@@ -160,20 +177,31 @@ const styles = StyleSheet.create({
           backgroundColor: '#1E40AF',
           flex: 1,
      },
-     btnCancelar: {
-          backgroundColor: '#DB2777',
+     btn: {
           padding: 10,
-          marginTop: 50,
-          marginHorizontal: 50,
-          borderRadius: 15,
+          marginTop: 40,
+          marginHorizontal: 20,
+          width: '40%',
+          borderRadius: 15
      },
-     btnCancelarTexto: {
+     contenedorBtn: {
+          flexDirection: 'row',
+          justifyContent: 'space-between'
+     },
+     btnEliminar: {
+          backgroundColor: 'red',
+     },
+     btnCancelar: {
+          backgroundColor: '#DB2777', 
+     },
+     btnTexto: {
           textAlign: 'center',
           textTransform: 'uppercase',
           fontSize: 20,
           color: '#FFF',
           fontWeight: 'bold'
      },
+    
      formulario: {
           ...globalStyles.contenedor
      },

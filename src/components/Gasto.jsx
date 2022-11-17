@@ -68,6 +68,7 @@ const styles = StyleSheet.create({
           marginHorizontal: 20,
           borderRadius: 10,
           paddingVertical: 30,
+          paddingHorizontal: 1,
           marginTop: 10,
           marginBottom: 10,
           shadowColor: "#000",
@@ -77,7 +78,7 @@ const styles = StyleSheet.create({
           },
           shadowOpacity: 0.34,
           shadowRadius: 6.27,
-          elevation: 10,
+          elevation: 5,
      },
      contenido: {
           flexDirection: 'row',

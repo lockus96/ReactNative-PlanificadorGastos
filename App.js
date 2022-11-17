@@ -36,7 +36,7 @@ const App = () => {
 
   const handleGasto = gasto => {
 
-    if (Object.values(gasto).includes('')) {
+    if ([ gasto.nombre, gasto.categoria, gasto.cantidad ].includes('')) {
       Alert.alert(
         'Error',
         'Todos los campos son obligatorios'
@@ -45,14 +45,23 @@ const App = () => {
       return
     }
 
-    // Añadir el gasto al State
+    if(gasto.id){
+      const gastosActualizados = gastos.map( gastoState => 
+        gastoState.id === gasto.id 
+        ? gasto 
+        : gastoState)
+      setGastos(gastosActualizados)
+    } else {
 
-    gasto.id = generarId()
-    gasto.fecha = Date.now()
- 
-    setGastos([...gastos, gasto])
+      // Añadir el gasto al State
+      gasto.id = generarId()
+      gasto.fecha = Date.now()
+  
+      setGastos([...gastos, gasto])
+    }
 
     setModal(!modal)
+
   }
 
   return (

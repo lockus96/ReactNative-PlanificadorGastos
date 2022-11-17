@@ -101,6 +101,7 @@ const App = () => {
             setModal={setModal}
             handleGasto={handleGasto}
             setGasto={setGasto}
+            gasto={gasto}
           />
         </Modal>
       )}

@@ -9,11 +9,26 @@ import {
 import { Picker } from '@react-native-picker/picker'
 import globalStyles from './styles'
 
-export default function FormularioGasto({ setModal, handleGasto, setGasto }) {
+export default function FormularioGasto({ 
+     setModal, 
+     handleGasto, 
+     setGasto, 
+     gasto 
+}) {
 
      const [nombre, setNombre] = useState('')
      const [cantidad, setCantidad] = useState('')
      const [categoria, setCategoria] = useState('')
+     const [id, setId] = useState('')
+
+     useEffect(()=>{
+          if(gasto?.nombre){
+               setNombre(gasto.nombre)
+               setCantidad(gasto.cantidad)
+               setCategoria(gasto.categoria)
+               setId(gasto.id)
+          }
+     }, [gasto])
 
      return (
           <View style={styles.contenedor}>
@@ -39,7 +54,7 @@ export default function FormularioGasto({ setModal, handleGasto, setGasto }) {
                     <Text
                          style={styles.titulo}
                     >
-                         Nuevo Gasto
+                         {gasto?.nombre ? 'Editar Gasto' : 'Nuevo Gasto'}
                     </Text>
 
                     <View
@@ -131,7 +146,7 @@ export default function FormularioGasto({ setModal, handleGasto, setGasto }) {
                          <Text
                               style={styles.submitBtnTexto}
                          >
-                              Agregar Gasto
+                              {gasto?.nombre ? 'Guardar Cambios' : 'Agregar Gasto'}
                          </Text>
                     </Pressable>
 

@@ -10,6 +10,7 @@ import {
   Modal
 } from 'react-native';
 import ControlPresupuesto from './src/components/ControlPresupuesto';
+import Filtro from './src/components/Filtro';
 import FormularioGasto from './src/components/FormularioGasto';
 import Header from './src/components/Header';
 import ListadoGastos from './src/components/ListadoGastos';
@@ -24,6 +25,8 @@ const App = () => {
   const [gastos, setGastos] = useState([])
   const [modal, setModal] = useState(false)
   const [gasto, setGasto] = useState({})
+  const [filtro, setFiltro] = useState('')
+  const [gastosFiltrados, setGastosFiltrados] = useState({})
 
 
   const handeNuevoPresupuesto = (presupuesto) => {
@@ -64,6 +67,26 @@ const App = () => {
 
   }
 
+
+    const eliminarGasto = id => {
+        Alert.alert(
+          '¿Estás segurísimo/a de querer borrar?',
+          'Una vez hecho, no se podrá recuperar',
+          [
+            { text: 'Cancelar', style: 'cancel'},
+            { text: 'Borrar', style: 'destructive', onPress: ()=>{
+
+              const gastosActualizados = gastos.filter( gastoState => gastoState.id !== id)
+
+              setGastos(gastosActualizados)
+              setModal(!modal)
+              setGasto({})
+            }}
+          ]
+        )
+    }
+
+
   return (
 
     <View style={styles.contenedor}>
@@ -89,11 +112,23 @@ const App = () => {
         </View>
 
         {isValidPresupuesto && (
-          <ListadoGastos
-            gastos={gastos}
-            setModal={setModal}
-            setGasto={setGasto}
-          />
+
+          <>
+            <Filtro 
+              filtro={filtro}
+              setFiltro={setFiltro}
+              gastos={gastos}
+              setGastosFiltrados={setGastosFiltrados}
+            />
+            <ListadoGastos
+              gastos={gastos}
+              setModal={setModal}
+              setGasto={setGasto}
+              filtro={filtro}
+              gastosFiltrados={gastosFiltrados}
+            />
+          </>
+
         )}
 
       </ScrollView>
@@ -111,12 +146,14 @@ const App = () => {
             handleGasto={handleGasto}
             setGasto={setGasto}
             gasto={gasto}
+            eliminarGasto={eliminarGasto}
           />
         </Modal>
       )}
 
       {isValidPresupuesto && (
         <Pressable
+          style={styles.pressable}
           onPress={() => setModal(true)}
         >
           <Image
@@ -138,12 +175,16 @@ const styles = StyleSheet.create({
     backgroundColor: '#3B82F6',
     minHeight: 400,
   },
-  imagen: {
+  pressable: {
     width: 60,
     height: 60,
     position: 'absolute',
     bottom: 30,
     right: 30
+  },
+  imagen: {
+    width: 60,
+    height: 60,
   }
 });
 

@@ -13,7 +13,8 @@ export default function FormularioGasto({
      setModal, 
      handleGasto, 
      setGasto, 
-     gasto 
+     gasto,
+     eliminarGasto
 }) {
 
      const [nombre, setNombre] = useState('')
@@ -49,20 +50,22 @@ export default function FormularioGasto({
                          </Text>
                     </Pressable>
 
-                    <Pressable
+                    { !!id &&  (
+
+                         <Pressable
                          style={[styles.btn, styles.btnEliminar]}
                          onPress={() => {
-                              setModal(false)
-                              setGasto({})
+                              eliminarGasto(id)
                          }}
-                    >
+                         >
                          <Text
                               style={styles.btnTexto}
                          >
                               Eliminar
                          </Text>
-                    </Pressable>
-
+                         </Pressable>
+                    )}
+                   
                </View>
 
                <View

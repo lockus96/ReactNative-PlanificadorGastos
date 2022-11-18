@@ -257,7 +257,7 @@ const styles = StyleSheet.create({
   },
   header: {
     backgroundColor: '#3B82F6',
-    minHeight: 500,
+    minHeight: 550,
   },
   pressable: {
     width: 60,

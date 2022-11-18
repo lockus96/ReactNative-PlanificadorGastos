@@ -27,23 +27,17 @@ const ListadoGastos = ({ gastos, setModal, setGasto, filtro, gastosFiltrados }) 
                     />
                )) }
 
-               { gastosFiltrados.length === 0 && (
-                    <Text
-                         style={styles.noGastos}
-                    >
-                         Ups, hasta acá llegamos
-                    </Text>
-               ) }     
                
-               {/* No funciona el || por algunra razón */}
-               
-               { gastos.length === 0 && (
-                    <Text
-                         style={styles.noGastos}
-                    >
-                         Ups, hasta acá llegamos
-                    </Text>
-               ) }     
+              
+                    { (gastos.length === 0 || (gastosFiltrados.length === 0 && !!filtro) ) && (
+                         <Text
+                              style={styles.noGastos}
+                         >
+                              Ups, no hay nada...
+                         </Text>
+
+                    )}
+                   
 
                <View 
                     style={styles.space}
@@ -51,19 +45,19 @@ const ListadoGastos = ({ gastos, setModal, setGasto, filtro, gastosFiltrados }) 
 
                </View>
           </View>
-     )
+     )    
 }
-
 const styles = StyleSheet.create({
      contenedor: {
           marginTop: 30
      },
      titulo: {
-          color: '#64748B',
+          color: '#FFC300',
           fontSize: 30,
           textAlign: 'center',
           fontWeight: '700',
           marginBottom: 20,
+          textTransform: 'uppercase'
      },
      noGastos: {
           marginTop: 20,

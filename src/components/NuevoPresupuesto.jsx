@@ -36,7 +36,22 @@ export default function NuevoPresupuesto({
 
 const styles = StyleSheet.create({
      contenedor: {
-          ...globalStyles.contenedor
+          zIndex: 20,
+          backgroundColor: '#fff',
+          marginHorizontal: 50,
+          borderRadius: 50,
+          paddingVertical: 20,
+          paddingHorizontal: 20,
+          transform: [{ translateY: 120 }],
+          shadowColor: "#000",
+          shadowOffset: {
+               width: 0,
+               height: 5,
+          },
+          shadowOpacity: 0.34,
+          shadowRadius: 6.27,
+
+          elevation: 10,
      },
      label: {
           textAlign: 'center',

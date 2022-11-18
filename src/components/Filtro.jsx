@@ -64,17 +64,19 @@ export default function Filtro({filtro, setFiltro, gastos, setGastosFiltrados}) 
 
 const styles = StyleSheet.create({
      contenedor: {
-          ...globalStyles.contenedor,
           transform: [{ translateY: 0 }],
           marginTop: 90,
-          marginHorizontal: 20
+          marginHorizontal: 20,
      },
      label: {
           fontSize: 20,
           fontWeight: '900',
-          color: '#64748B'
+          color: 'white',
+          textTransform: 'uppercase'
      },
      input: {
           marginTop: 15,
-     }
+          color: 'black',
+          backgroundColor: '#00fff',
+     },
 })

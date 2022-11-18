@@ -77,6 +77,6 @@ const styles = StyleSheet.create({
      input: {
           marginTop: 15,
           color: 'black',
-          backgroundColor: '#00fff',
+          backgroundColor: '#fff',
      },
 })

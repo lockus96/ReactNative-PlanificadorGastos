@@ -4,7 +4,13 @@ import globalStyles from './styles'
 import { formatearCantidad } from '../helpers'
 import CircularProgress from 'react-native-circular-progress-indicator'
 
-export default function ControlPresupuesto({presupuesto, gastos, resetearApp}) {
+export default function ControlPresupuesto({
+  presupuesto, 
+  gastos, 
+  resetearApp,
+  setIsValidPresupuesto,
+  setPresupuesto
+}) {
 
   const [ disponible, setDisponible ] = useState(0)
   const [ gastado, setGastado ] = useState(0)
@@ -35,8 +41,8 @@ export default function ControlPresupuesto({presupuesto, gastos, resetearApp}) {
               radius={130}
               valueSuffix={'%'}
               title='Gastado'
-              titleColor='white'
-              inActiveStrokeColor='#E8FBC6'
+              titleColor='black'
+              inActiveStrokeColor='#FFE591'
               inActiveStrokeWidth={20}
               activeStrokeColor='#FF5733'
               activeStrokeWidth={20}
@@ -58,12 +64,21 @@ export default function ControlPresupuesto({presupuesto, gastos, resetearApp}) {
               </Text>
             </Pressable>
 
-            <Text style={styles.valor}>
-                <Text style={styles.label}>
-                  Presupuesto: {''}
-                </Text>
-                {formatearCantidad(presupuesto)}
-            </Text>
+            <Pressable
+              style={styles.btnPresupuesto}
+              onLongPress={()=>{
+                setIsValidPresupuesto(false)
+                setPresupuesto(0)
+              }
+              }
+            >
+              <Text style={styles.valorPresupuesto}>
+                  <Text style={styles.labelPresupuesto}>
+                    Presupuesto: {''}
+                  </Text>
+                  {formatearCantidad(presupuesto)}
+              </Text>
+            </Pressable>
 
             <Text style={styles.valor}>
                 <Text style={styles.label}>
@@ -85,7 +100,7 @@ export default function ControlPresupuesto({presupuesto, gastos, resetearApp}) {
 
 const styles = StyleSheet.create({
   contenedor: {
-    backgroundColor: '#fff3',
+    backgroundColor: '#FEFEFE',
     marginHorizontal: 10,
     borderRadius: 10,
     paddingVertical: 40,
@@ -125,12 +140,28 @@ const styles = StyleSheet.create({
   valor: {
     fontSize: 25,
     textAlign: 'center',
-    color: '#FFC300',
+    color: 'red',
+    marginBottom: 6,
+    fontWeight: 'bold'
+  },
+  valorPresupuesto: {
+    fontSize: 25,
+    textAlign: 'center',
+    color: '#F3CD52',
     marginBottom: 6,
     fontWeight: 'bold'
   },
   label: {
     fontWeight: '700',
-    color: '#EBF7D6'
+    color: 'black'
   },
+  labelPresupuesto: {
+    fontWeight: '700',
+    color: '#FFF6D8'
+  },
+  btnPresupuesto: {
+    backgroundColor: '#8C8C8C',
+    borderRadius: 20,
+    marginHorizontal: 30
+  }
 })

@@ -183,6 +183,8 @@ const App = () => {
               presupuesto={presupuesto}
               gastos={gastos}
               resetearApp={resetearApp}
+              setIsValidPresupuesto={setIsValidPresupuesto}
+              setPresupuesto={setPresupuesto}
             />
           ) : (
             <NuevoPresupuesto

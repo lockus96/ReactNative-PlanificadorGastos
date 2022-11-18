@@ -64,7 +64,8 @@ const styles = StyleSheet.create({
           borderRadius: 15,
           textAlign: 'center',
           marginTop: 30,
-          color: 'black'
+          color: 'black',
+          fontSize: 25,
      },
      boton: {
           marginTop: 30,

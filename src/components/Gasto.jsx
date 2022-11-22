@@ -7,7 +7,7 @@ const icons = {
      ropa: require('../img/ropa.png'),
      salidas: require('../img/salidas.png'),
      viajes: require('../img/viajes.png'),
-     suscripciones: require('../img/suscripciones.png'),
+     servicios: require('../img/suscripciones.png'),
      otros: require('../img/otros.png'),
 
 }

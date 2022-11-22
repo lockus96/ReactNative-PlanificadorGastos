@@ -34,27 +34,27 @@ export default function Filtro({filtro, setFiltro, gastos, setGastosFiltrados}) 
                          value=''
                     />
                     <Picker.Item
-                         label='Comida'
+                         label='Comida 🍕'
                          value='comida'
                     />
                     <Picker.Item
-                         label='Ropa'
+                         label='Ropa 👟'
                          value='ropa'
                     />
                     <Picker.Item
-                         label='Salidas'
+                         label='Salidas 🥳'
                          value='salidas'
                     />
                     <Picker.Item
-                         label='Viajes'
+                         label='Viajes ✈️'
                          value='viajes'
                     />
                     <Picker.Item
-                         label='Suscripciones'
-                         value='suscripciones'
+                         label='Servicios 📺'
+                         value='servicios'
                     />
                     <Picker.Item
-                         label='Otros'
+                         label='Otros 🛠️'
                          value='otros'
                     />
                </Picker>

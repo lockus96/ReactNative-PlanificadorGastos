@@ -149,8 +149,8 @@ export default function FormularioGasto({
                                    value='viajes'
                               />
                               <Picker.Item
-                                   label='Suscripciones'
-                                   value='suscripciones'
+                                   label='Servicios'
+                                   value='servicios'
                               />
                               <Picker.Item
                                    label='Otros'
@@ -161,7 +161,10 @@ export default function FormularioGasto({
 
                     <Pressable
                          style={styles.submitBtn}
-                         onPress={()=>handleGasto({ nombre, cantidad, categoria, id, fecha })}
+                         onPress={()=>{
+                              handleGasto({ nombre, cantidad, categoria, id, fecha })
+                              setGasto({})
+                         }}
                     >
                          <Text
                               style={styles.submitBtnTexto}

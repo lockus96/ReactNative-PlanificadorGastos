@@ -60,13 +60,13 @@ export default function ControlPresupuesto({
               <Text
                 style={styles.textoBoton}
               >
-                Reiniciar App
+                Limpiar Todo
               </Text>
             </Pressable>
 
             <Pressable
               style={styles.btnPresupuesto}
-              onLongPress={()=>{
+              onPress={()=>{
                 setIsValidPresupuesto(false)
                 setPresupuesto(0)
               }
@@ -162,6 +162,7 @@ const styles = StyleSheet.create({
   btnPresupuesto: {
     backgroundColor: '#8C8C8C',
     borderRadius: 20,
-    marginHorizontal: 30
+    marginHorizontal: 20,
+    paddingVertical: 2
   }
 })

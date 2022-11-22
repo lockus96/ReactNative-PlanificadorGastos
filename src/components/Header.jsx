@@ -5,8 +5,9 @@ export default function Header() {
   return (
     <View>
           <Text style={styles.texto}>
-               Planificador de Gastos 🐈
+               Planificador de Gastos 💰
           </Text>
+
     </View>
   )
 }
@@ -20,7 +21,7 @@ const styles = StyleSheet.create({
           color: '#fff',
           textTransform: 'uppercase',
           fontWeight: 'bold',
-          paddingTop: 100,
+          paddingTop: 60,
           textShadowColor: 'rgba(0, 0, 0, 0.75)',
           textShadowOffset: {width: -1, height: 1},
           textShadowRadius: 10
